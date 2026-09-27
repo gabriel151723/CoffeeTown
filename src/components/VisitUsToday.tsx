@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { motion } from 'motion/react';
-import { MapPin, Navigation, Copy, Check, Clock, Phone, MessageCircle, ZoomIn } from 'lucide-react';
+import { MapPin, Navigation, Copy, Check, Clock, Phone, MessageCircle, ZoomIn, Camera, ExternalLink } from 'lucide-react';
 import { STORE_INFO, VISIT_US_GALLERY } from '../data/coffeetownData';
 import { ImageLightboxModal } from './ImageLightboxModal';
+import { InteractiveMap } from './InteractiveMap';
 
 export const VisitUsToday: React.FC = () => {
   const [copiedAddress, setCopiedAddress] = useState(false);
@@ -48,8 +49,22 @@ export const VisitUsToday: React.FC = () => {
     <section id="visite-nos" className="py-16 md:py-24 bg-[#F7F2EB] border-b border-[#E8DFD5] scroll-mt-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Layout de 2 Colunas com Animações */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-stretch">
+        {/* Cabeçalho da Seção */}
+        <div className="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
+          <span className="font-script text-2xl sm:text-3xl text-[#5C3A21] block mb-1">
+            Te esperamos na Pituba
+          </span>
+          <h2 className="font-serif text-3xl sm:text-4xl font-bold text-[#2C1E16] tracking-tight mb-2.5">
+            Visite a Coffeetown Hoje
+          </h2>
+          <div className="text-sm text-[#5C3A21] mb-3">❦</div>
+          <p className="text-xs sm:text-sm text-[#6F6158] leading-relaxed">
+            Localizada em uma das esquinas mais nobres e arborizadas da Pituba. Venha pelo café especial da torrefação própria semanal e fique pelo ambiente acolhedor e atendimento afetuoso.
+          </p>
+        </div>
+
+        {/* 1. Grade Principal: Informações & Mapa Interativo React-Leaflet */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-stretch mb-14">
           
           {/* Coluna Esquerda: Card com Endereço, Horários e Ações Rápidas */}
           <motion.div
@@ -57,51 +72,45 @@ export const VisitUsToday: React.FC = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: '-50px' }}
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-            className="lg:col-span-5 bg-[#FAF6F0] rounded-3xl border border-[#E8DFD5] p-6 sm:p-10 flex flex-col justify-between shadow-2xs"
+            className="lg:col-span-5 bg-[#FAF6F0] rounded-3xl border border-[#E8DFD5] p-6 sm:p-8 flex flex-col justify-between shadow-2xs"
           >
             <div>
-              <span className="font-script text-2xl sm:text-3xl text-[#5C3A21] block mb-1">
-                Te esperamos na Pituba
+              <span className="text-[11px] font-bold text-[#5C3A21] uppercase tracking-[0.2em] block mb-2">
+                Informações de Atendimento
               </span>
 
-              <h2 className="font-serif text-3xl sm:text-4xl font-bold text-[#2C1E16] tracking-tight mb-2">
-                Visite a Coffeetown Hoje
-              </h2>
-
-              <div className="text-sm text-[#5C3A21] mb-4">❦</div>
-
-              <p className="text-xs sm:text-sm text-[#6F6158] leading-relaxed mb-6">
-                Adoraríamos receber você em nossa casa. Venha pelo café especial da torrefação própria e fique pelo ambiente acolhedor e atendimento afetuoso!
-              </p>
+              <h3 className="font-serif text-2xl font-bold text-[#2C1E16] mb-4">
+                Cafeteria & Pâtisserie Pituba
+              </h3>
 
               {/* Informações Oficiais */}
-              <div className="mb-6 space-y-3 text-xs text-[#2C1E16] bg-white/70 p-4 rounded-2xl border border-[#E8DFD5]">
-                <div className="flex items-start gap-2.5 font-medium">
+              <div className="mb-6 space-y-3.5 text-xs text-[#2C1E16] bg-white/70 p-4 sm:p-5 rounded-2xl border border-[#E8DFD5]">
+                <div className="flex items-start gap-3 font-medium">
                   <MapPin className="w-4 h-4 text-[#5C3A21] shrink-0 mt-0.5" />
                   <div>
                     <span className="font-bold block text-[#2C1E16]">Endereço Oficial:</span>
-                    <span className="text-[#6F6158]">{STORE_INFO.address}</span>
+                    <span className="text-[#6F6158] leading-relaxed">{STORE_INFO.address}</span>
                   </div>
                 </div>
 
-                <div className="flex items-start gap-2.5 text-[#2C1E16]">
+                <div className="flex items-start gap-3 text-[#2C1E16]">
                   <Clock className="w-4 h-4 text-[#5C3A21] shrink-0 mt-0.5" />
                   <div>
                     <span className="font-bold block text-[#2C1E16]">Horário de Funcionamento:</span>
-                    <span className="text-[#6F6158]">Segunda a Domingo: 08h30 às 21h00 (sem intervalo)</span>
+                    <span className="text-[#6F6158]">Segunda a Domingo: 08h30 às 21h00 (aberto direto)</span>
                   </div>
                 </div>
 
-                <div className="flex items-start gap-2.5 text-[#2C1E16]">
+                <div className="flex items-start gap-3 text-[#2C1E16]">
                   <Phone className="w-4 h-4 text-[#5C3A21] shrink-0 mt-0.5" />
                   <div>
-                    <span className="font-bold block text-[#2C1E16]">WhatsApp para Atendimento:</span>
+                    <span className="font-bold block text-[#2C1E16]">WhatsApp para Pedidos & Reservas:</span>
                     <span className="text-[#6F6158]">{STORE_INFO.phoneDisplay}</span>
                   </div>
                 </div>
               </div>
 
-              {/* Botão de Rotas no Google Maps com Efeito de Destaque */}
+              {/* Botão de Rotas no Google Maps */}
               <div className="mb-5">
                 <motion.a
                   whileHover={{ scale: 1.03 }}
@@ -117,7 +126,7 @@ export const VisitUsToday: React.FC = () => {
               </div>
             </div>
 
-            {/* Micro-Interações de Cópia em 1 Clique com Animação Spring */}
+            {/* Micro-Interações de Cópia em 1 Clique (Endereço e Chave Pix) */}
             <div className="pt-5 border-t border-[#E8DFD5] grid grid-cols-2 gap-2 text-xs">
               <motion.button
                 whileTap={{ scale: 0.95 }}
@@ -153,14 +162,43 @@ export const VisitUsToday: React.FC = () => {
             </div>
           </motion.div>
 
-          {/* Coluna Direita: Colagem de 3 Fotos Verticais com Zoom Interativo & Lightbox */}
-          <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 items-stretch">
+          {/* Coluna Direita: Componente de Mapa Interativo React-Leaflet */}
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: '-50px' }}
+            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+            className="lg:col-span-7 flex flex-col justify-between"
+          >
+            <InteractiveMap height="100%" className="min-h-[440px] sm:min-h-[460px] h-full" />
+          </motion.div>
+
+        </div>
+
+        {/* 2. Galeria de Fotos Autênticas da Unidade Pituba */}
+        <div className="pt-8 border-t border-[#E8DFD5]">
+          <div className="flex items-center justify-between mb-6">
+            <div>
+              <span className="text-[10px] font-bold text-[#5C3A21] uppercase tracking-[0.2em] block mb-1">
+                Conheça Nossa Casa
+              </span>
+              <h3 className="font-serif text-xl sm:text-2xl font-bold text-[#2C1E16]">
+                Espaços & Ambiente da Unidade Pituba
+              </h3>
+            </div>
+            <span className="hidden sm:inline-flex items-center gap-1.5 text-xs text-[#7E6F65]">
+              <Camera className="w-4 h-4 text-[#5C3A21]" />
+              <span>Clique nas fotos para ampliar</span>
+            </span>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
             {/* Foto 1: Fachada e mesas externas */}
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 25 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-50px' }}
-              transition={{ duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+              viewport={{ once: true, margin: '-40px' }}
+              transition={{ duration: 0.6, delay: 0.1 }}
               whileHover={{ y: -6, transition: { duration: 0.25 } }}
               onClick={() =>
                 openLightbox(
@@ -169,7 +207,7 @@ export const VisitUsToday: React.FC = () => {
                   'Mesas ao ar livre protegidas por ombrelones na Rua Amazonas, 480. Perfeito para manhãs ensolaradas e fins de tarde acolhedores.'
                 )
               }
-              className="rounded-3xl overflow-hidden border border-[#E8DFD5] shadow-2xs bg-[#EFE8DE] group relative h-64 sm:h-[460px] cursor-pointer shine-effect"
+              className="rounded-3xl overflow-hidden border border-[#E8DFD5] shadow-2xs bg-[#EFE8DE] group relative h-60 sm:h-72 cursor-pointer shine-effect"
             >
               <img
                 src={VISIT_US_GALLERY.facade}
@@ -177,14 +215,11 @@ export const VisitUsToday: React.FC = () => {
                 className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
                 loading="lazy"
               />
-              
-              {/* Overlay com Ícone de Ampliar */}
               <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                 <span className="p-3 rounded-full bg-white/90 text-[#2C1E16] shadow-lg transform scale-75 group-hover:scale-100 transition-transform">
                   <ZoomIn className="w-5 h-5 text-[#5C3A21]" />
                 </span>
               </div>
-
               <div className="absolute bottom-3 left-3 right-3 p-2 rounded-xl bg-[#FAF7F2]/90 backdrop-blur-sm border border-[#E8DFD5] text-center">
                 <span className="text-[10px] font-bold text-[#5C3A21] uppercase tracking-wider block">
                   Fachada na Pituba
@@ -194,10 +229,10 @@ export const VisitUsToday: React.FC = () => {
 
             {/* Foto 2: Torrefação & Barista */}
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 25 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-50px' }}
-              transition={{ duration: 0.6, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+              viewport={{ once: true, margin: '-40px' }}
+              transition={{ duration: 0.6, delay: 0.2 }}
               whileHover={{ y: -6, transition: { duration: 0.25 } }}
               onClick={() =>
                 openLightbox(
@@ -206,7 +241,7 @@ export const VisitUsToday: React.FC = () => {
                   'Nosso torrador de cafés especiais e vitrine refrigerada com bolos americanos e croissants assados diariamente.'
                 )
               }
-              className="rounded-3xl overflow-hidden border border-[#E8DFD5] shadow-2xs bg-[#EFE8DE] group relative h-64 sm:h-[460px] cursor-pointer shine-effect"
+              className="rounded-3xl overflow-hidden border border-[#E8DFD5] shadow-2xs bg-[#EFE8DE] group relative h-60 sm:h-72 cursor-pointer shine-effect"
             >
               <img
                 src={VISIT_US_GALLERY.roastery}
@@ -214,14 +249,11 @@ export const VisitUsToday: React.FC = () => {
                 className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
                 loading="lazy"
               />
-
-              {/* Overlay com Ícone de Ampliar */}
               <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                 <span className="p-3 rounded-full bg-white/90 text-[#2C1E16] shadow-lg transform scale-75 group-hover:scale-100 transition-transform">
                   <ZoomIn className="w-5 h-5 text-[#5C3A21]" />
                 </span>
               </div>
-
               <div className="absolute bottom-3 left-3 right-3 p-2 rounded-xl bg-[#FAF7F2]/90 backdrop-blur-sm border border-[#E8DFD5] text-center">
                 <span className="text-[10px] font-bold text-[#5C3A21] uppercase tracking-wider block">
                   Balcão & Pâtisserie
@@ -231,10 +263,10 @@ export const VisitUsToday: React.FC = () => {
 
             {/* Foto 3: Interior Acolhedor Climatizado */}
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 25 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-50px' }}
-              transition={{ duration: 0.6, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
+              viewport={{ once: true, margin: '-40px' }}
+              transition={{ duration: 0.6, delay: 0.3 }}
               whileHover={{ y: -6, transition: { duration: 0.25 } }}
               onClick={() =>
                 openLightbox(
@@ -243,7 +275,7 @@ export const VisitUsToday: React.FC = () => {
                   'Ambiente com iluminação intimista, mesas em madeira nobre, tomadas para coworking e trilha sonora de jazz e indie folk.'
                 )
               }
-              className="rounded-3xl overflow-hidden border border-[#E8DFD5] shadow-2xs bg-[#EFE8DE] group relative h-64 sm:h-[460px] cursor-pointer shine-effect"
+              className="rounded-3xl overflow-hidden border border-[#E8DFD5] shadow-2xs bg-[#EFE8DE] group relative h-60 sm:h-72 cursor-pointer shine-effect"
             >
               <img
                 src={VISIT_US_GALLERY.interior}
@@ -251,14 +283,11 @@ export const VisitUsToday: React.FC = () => {
                 className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
                 loading="lazy"
               />
-
-              {/* Overlay com Ícone de Ampliar */}
               <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                 <span className="p-3 rounded-full bg-white/90 text-[#2C1E16] shadow-lg transform scale-75 group-hover:scale-100 transition-transform">
                   <ZoomIn className="w-5 h-5 text-[#5C3A21]" />
                 </span>
               </div>
-
               <div className="absolute bottom-3 left-3 right-3 p-2 rounded-xl bg-[#FAF7F2]/90 backdrop-blur-sm border border-[#E8DFD5] text-center">
                 <span className="text-[10px] font-bold text-[#5C3A21] uppercase tracking-wider block">
                   Ambiente Aconchegante
@@ -267,35 +296,34 @@ export const VisitUsToday: React.FC = () => {
             </motion.div>
           </div>
 
-        </div>
-
-        {/* Link Direto para Álbum de Fotos Reais no Google Maps */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-30px' }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="mt-8 pt-6 border-t border-[#E8DFD5] flex flex-col sm:flex-row items-center justify-between gap-4 bg-[#FAF7F2] p-4 rounded-2xl border"
-        >
-          <div className="flex items-center gap-3">
-            <span className="text-xl">📍</span>
-            <div>
-              <span className="text-xs font-bold text-[#2C1E16] block">Galeria de Fotos do Google Maps</span>
-              <span className="text-[11px] text-[#7E6F65]">Explore mais de 1.280 fotos reais publicadas por frequentadores na unidade Pituba</span>
-            </div>
-          </div>
-          <motion.a
-            whileHover={{ scale: 1.04 }}
-            whileTap={{ scale: 0.96 }}
-            href={STORE_INFO.googleMapsPhotosUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white hover:bg-[#EFE8DE] text-[#5C3A21] border border-[#D9CEBF] text-xs font-semibold uppercase tracking-wider transition-colors shadow-2xs whitespace-nowrap cursor-pointer"
+          {/* Link Direto para Álbum de Fotos Reais no Google Maps */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-30px' }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="mt-6 flex flex-col sm:flex-row items-center justify-between gap-4 bg-[#FAF7F2] p-4 rounded-2xl border border-[#E8DFD5]"
           >
-            <span>Ver Fotos no Google Maps</span>
-            <span className="text-amber-600">↗</span>
-          </motion.a>
-        </motion.div>
+            <div className="flex items-center gap-3">
+              <span className="text-xl">📍</span>
+              <div>
+                <span className="text-xs font-bold text-[#2C1E16] block">Galeria de Fotos no Google Maps</span>
+                <span className="text-[11px] text-[#7E6F65]">Explore mais de 1.280 fotos reais publicadas por clientes na unidade Pituba</span>
+              </div>
+            </div>
+            <motion.a
+              whileHover={{ scale: 1.04 }}
+              whileTap={{ scale: 0.96 }}
+              href={STORE_INFO.googleMapsPhotosUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white hover:bg-[#EFE8DE] text-[#5C3A21] border border-[#D9CEBF] text-xs font-semibold uppercase tracking-wider transition-colors shadow-2xs whitespace-nowrap cursor-pointer"
+            >
+              <span>Ver Fotos no Google Maps</span>
+              <span className="text-amber-600">↗</span>
+            </motion.a>
+          </motion.div>
+        </div>
 
       </div>
 

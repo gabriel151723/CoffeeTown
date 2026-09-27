@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { ShoppingBag, MessageCircle, Clock, Menu, X, Instagram, MapPin } from 'lucide-react';
 import { BrandSeal } from './BrandSeal';
+import { ThemeToggle } from './ThemeToggle';
 import { STORE_INFO } from '../data/coffeetownData';
 
 interface HeaderProps {
@@ -198,8 +199,11 @@ export const Header: React.FC<HeaderProps> = ({ cartCount, onOpenCart }) => {
           </nav>
 
           {/* Ações do Topo */}
-          <div className="flex items-center gap-2 sm:gap-3">
+          <div className="flex items-center gap-2 sm:gap-2.5">
             
+            {/* Botão de Alternância de Tema (Modo Diurno / Noturno com tons de Café) */}
+            <ThemeToggle isScrolled={isScrolled} />
+
             {/* Botão da Comanda do Pedido */}
             <button
               onClick={onOpenCart}
@@ -294,6 +298,11 @@ export const Header: React.FC<HeaderProps> = ({ cartCount, onOpenCart }) => {
                 </button>
               );
             })}
+
+            {/* Alternador de Tema no Menu Mobile */}
+            <div className="pt-2 border-t border-[#E8DFD5]/50 mt-2">
+              <ThemeToggle variant="menu" />
+            </div>
           </motion.div>
         )}
       </AnimatePresence>

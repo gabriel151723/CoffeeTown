@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrandSeal } from './BrandSeal';
+import { ThemeToggle } from './ThemeToggle';
 import { STORE_INFO } from '../data/coffeetownData';
 
 interface FooterProps {
@@ -26,8 +27,11 @@ export const Footer: React.FC<FooterProps> = ({ onOpenExport }) => {
             </div>
           </div>
 
-          <div className="text-xs text-[#7E6F65]">
-            © {new Date().getFullYear()} Coffeetown Salvador. Todos os direitos reservados.
+          <div className="flex flex-col sm:flex-row items-center gap-3">
+            <ThemeToggle variant="pill" />
+            <div className="text-xs text-[#7E6F65]">
+              © {new Date().getFullYear()} Coffeetown Salvador. Todos os direitos reservados.
+            </div>
           </div>
 
           <div className="flex items-center gap-3 text-[11px]">

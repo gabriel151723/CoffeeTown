@@ -1,14 +1,43 @@
 import React from 'react';
-import { motion } from 'motion/react';
+import { motion, type Variants } from 'framer-motion';
 import { WHY_CHOOSE_US_ITEMS } from '../data/coffeetownData';
 import { ArrowRight, Sparkles } from 'lucide-react';
+
+// Variantes refinadas de animação para transição suave de fade-in sequencial (stagger)
+const containerVariants: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.18,
+      delayChildren: 0.1,
+    },
+  },
+};
+
+const cardFadeInVariants: Variants = {
+  hidden: {
+    opacity: 0,
+    y: 36,
+    scale: 0.97,
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: {
+      duration: 0.75,
+      ease: [0.22, 1, 0.36, 1], // Curva cúbica suave para transição editorial
+    },
+  },
+};
 
 export const WhyChooseUs: React.FC = () => {
   return (
     <section id="por-que-nos" className="py-16 md:py-24 bg-[#F7F2EB] border-b border-[#E8DFD5] scroll-mt-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Cabeçalho da Seção com Animação Editorial */}
+        {/* Cabeçalho da Seção com Animação Suave */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -29,15 +58,18 @@ export const WhyChooseUs: React.FC = () => {
           </p>
         </motion.div>
 
-        {/* Grade de 3 Cards com Alturas Uniformes, Elevação Hover e Shimmer */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 items-stretch">
-          {WHY_CHOOSE_US_ITEMS.map((item, index) => (
+        {/* Grade de 3 Cards com Efeito de Fade-in Suave com Framer-Motion ao Entrar na Tela */}
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2, margin: '-40px' }}
+          className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 items-stretch"
+        >
+          {WHY_CHOOSE_US_ITEMS.map((item) => (
             <motion.div
               key={item.id}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-50px' }}
-              transition={{ duration: 0.6, delay: index * 0.15, ease: [0.22, 1, 0.36, 1] }}
+              variants={cardFadeInVariants}
               whileHover={{ y: -8, transition: { duration: 0.25 } }}
               className="bg-[#FAF7F2] rounded-3xl border border-[#E8DFD5] p-5 sm:p-6 flex flex-col justify-between shadow-2xs hover:shadow-xl hover:border-amber-600/30 transition-all duration-300 group h-full relative"
             >
@@ -85,7 +117,7 @@ export const WhyChooseUs: React.FC = () => {
               </div>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
 
       </div>
     </section>
