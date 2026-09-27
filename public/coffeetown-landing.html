@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Café Coffeetown Salvador - American Coffee & Cake | Pituba</title>
+  <meta name="description" content="Coffeetown Salvador na Pituba. Torrefação artesanal, cafés especiais, cheesecake novaiorquino, bolos e brunch artesanal em Salvador, Bahia." />
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Google Fonts: Playfair Display + Cormorant Garamond + Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,400;1,600;1,700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              bg: '#F7F2EB',
+              surface: '#FFFFFF',
+              cream: '#FAF7F2',
+              warm: '#EFE8DE',
+              brown: '#5C3A21',
+              dark: '#2C1E16',
+              amber: '#C87D32',
+              muted: '#7E6F65'
+            }
+          },
+          fontFamily: {
+            serif: ['"Playfair Display"', 'Georgia', 'serif'],
+            script: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      background-color: #F7F2EB;
+      color: #2C1E16;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+    h1, h2, h3, h4, .font-serif {
+      font-family: 'Playfair Display', Georgia, serif;
+      letter-spacing: -0.015em;
+    }
+    .font-script {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-style: italic;
+    }
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    section[id] { scroll-margin-top: 80px; }
+  </style>
+
+  <!-- Schema.org Estruturado -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CafeOrCoffeeShop",
+    "name": "Coffeetown Salvador",
+    "telephone": "+55-71-99991-4478",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Rua Amazonas, 1111",
+      "addressLocality": "Salvador",
+      "addressRegion": "BA",
+      "addressCountry": "BR"
+    },
+    "servesCuisine": ["American Coffee", "Artisan Bakery", "Brunch", "Specialty Coffee"],
+    "priceRange": "$$"
+  }
+  </script>
+</head>
+<body class="selection:bg-[#5C3A21]/20 selection:text-[#2C1E16]">
+
+  <!-- ================= 1. CABEÇALHO ADAPTATIVO FIXO ================= -->
+  <header id="mainHeader" class="fixed top-0 left-0 right-0 z-40 bg-black/40 backdrop-blur-md border-b border-white/10 text-white transition-all duration-300">
+    
+    <!-- Barra Superior de Horários -->
+    <div id="topNotificationBar" class="w-full bg-black/50 text-white/80 border-b border-white/10 py-1.5 px-4 text-xs transition-colors">
+      <div class="max-w-7xl mx-auto flex items-center justify-between">
+        <div class="flex items-center gap-2">
+          <span class="font-script text-base font-semibold">Bom Café, Bons Momentos</span>
+          <span class="hidden sm:inline opacity-50">·</span>
+          <span class="hidden sm:inline">Torrefação Própria & Pâtisserie Artesanal na Pituba</span>
+        </div>
+        <div class="flex items-center gap-3">
+          <span class="font-medium">⏰ Seg a Dom: 08:30 às 21:00</span>
+          <a href="https://www.instagram.com/coffeetownsalvadorr" target="_blank" class="hidden md:inline hover:underline">@coffeetownsalvadorr</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Barra de Navegação -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between">
+      
+      <!-- Logo Marca -->
+      <a href="#inicio" onclick="smoothScrollTo('inicio'); return false;" class="flex items-center gap-3 group">
+        <div class="w-9 h-9 rounded-full bg-[#C87D32] text-white flex items-center justify-center font-serif font-bold text-sm shadow-md">
+          CT
+        </div>
+        <div>
+          <span id="brandTitle" class="font-serif text-lg sm:text-xl font-bold tracking-tight text-white block leading-none">CAFÉ COFFEETOWN</span>
+          <span id="brandSubtitle" class="text-[10px] text-white/70 font-medium tracking-[0.2em] uppercase">SALVADOR · PITUBA</span>
+        </div>
+      </a>
+
+      <!-- Abas Clicáveis de Navegação do Topo -->
+      <nav id="topNavTabs" class="hidden lg:flex items-center gap-1 p-1 bg-white/10 border border-white/20 rounded-full backdrop-blur-md" aria-label="Navegação Principal">
+        <button onclick="smoothScrollTo('inicio')" data-tab="inicio" class="nav-tab-btn px-3.5 py-1.5 rounded-full text-xs font-semibold tracking-wider transition-all bg-[#C87D32] text-white shadow-md font-bold cursor-pointer">
+          Início
+        </button>
+        <button onclick="smoothScrollTo('por-que-nos')" data-tab="por-que-nos" class="nav-tab-btn px-3.5 py-1.5 rounded-full text-xs font-semibold tracking-wider transition-all text-white/80 hover:text-white hover:bg-white/15 cursor-pointer">
+          Por Que Nós
+        </button>
+        <button onclick="smoothScrollTo('cardapio')" data-tab="cardapio" class="nav-tab-btn px-3.5 py-1.5 rounded-full text-xs font-semibold tracking-wider transition-all text-white/80 hover:text-white hover:bg-white/15 cursor-pointer">
+          Cardápio
+        </button>
+        <button onclick="smoothScrollTo('visite-nos')" data-tab="visite-nos" class="nav-tab-btn px-3.5 py-1.5 rounded-full text-xs font-semibold tracking-wider transition-all text-white/80 hover:text-white hover:bg-white/15 cursor-pointer">
+          Visite a Cafeteria
+        </button>
+        <button onclick="smoothScrollTo('avaliacoes')" data-tab="avaliacoes" class="nav-tab-btn px-3.5 py-1.5 rounded-full text-xs font-semibold tracking-wider transition-all text-white/80 hover:text-white hover:bg-white/15 cursor-pointer">
+          Depoimentos
+        </button>
+      </nav>
+
+      <!-- Ações do Topo -->
+      <div class="flex items-center gap-2.5">
+        <button id="openCartBtn" class="flex items-center gap-2 px-3 sm:px-3.5 py-2 rounded-full bg-white/15 hover:bg-white/25 text-white border border-white/25 text-xs font-semibold cursor-pointer transition-all active:scale-95">
+          <i data-lucide="shopping-bag" class="w-4 h-4 text-amber-300"></i>
+          <span class="hidden sm:inline">Comanda</span>
+          <span id="cartCountBadge" class="bg-[#C87D32] text-white rounded-full w-5 h-5 flex items-center justify-center text-[10px]">0</span>
+        </button>
+
+        <a href="https://wa.me/5571999914478?text=Ol%C3%A1%2C+Coffeetown+Salvador%21+Gostaria+de+fazer+um+pedido." target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 sm:gap-2 px-4 sm:px-5 py-2 sm:py-2.5 rounded-full bg-[#C87D32] hover:bg-[#B36B25] text-white font-semibold text-xs sm:text-sm uppercase tracking-wider transition-all shadow-md active:scale-95">
+          <i data-lucide="message-circle" class="w-4 h-4 fill-white"></i>
+          <span>Fazer Pedido</span>
+        </a>
+
+        <!-- Botão Menu Mobile -->
+        <button id="mobileMenuToggle" class="lg:hidden p-2 text-white hover:bg-white/10 rounded-lg">
+          <i data-lucide="menu" class="w-5 h-5"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Menu Mobile Dropdown -->
+    <div id="mobileMenuDropdown" class="hidden lg:hidden px-4 pt-2 pb-4 border-t border-white/20 space-y-2 bg-black/90 backdrop-blur-xl">
+      <button onclick="smoothScrollTo('inicio')" class="w-full text-left px-4 py-2.5 text-xs font-semibold rounded-lg bg-[#C87D32] text-white font-bold">Início</button>
+      <button onclick="smoothScrollTo('por-que-nos')" class="w-full text-left px-4 py-2.5 text-xs font-semibold rounded-lg text-white/80 hover:bg-white/10 bg-white/5">Por Que Nós</button>
+      <button onclick="smoothScrollTo('cardapio')" class="w-full text-left px-4 py-2.5 text-xs font-semibold rounded-lg text-white/80 hover:bg-white/10 bg-white/5">Cardápio</button>
+      <button onclick="smoothScrollTo('visite-nos')" class="w-full text-left px-4 py-2.5 text-xs font-semibold rounded-lg text-white/80 hover:bg-white/10 bg-white/5">Visite a Cafeteria</button>
+      <button onclick="smoothScrollTo('avaliacoes')" class="w-full text-left px-4 py-2.5 text-xs font-semibold rounded-lg text-white/80 hover:bg-white/10 bg-white/5">Depoimentos</button>
+    </div>
+  </header>
+
+  <!-- ================= 2. PRIMEIRA PÁGINA (HERO FULL COVER DE TELA CHEIA) ================= -->
+  <section id="inicio" class="relative w-full min-h-screen flex items-center justify-center overflow-hidden">
+    
+    <!-- Imagem em Tela Cheia Cobrindo 100% da Primeira Página -->
+    <div class="absolute inset-0 z-0 w-full h-full overflow-hidden">
+      <img
+        src="/src/assets/images/hero_flatlay_coffee_1790529629197.jpg"
+        alt="Coffeetown Salvador - Flatlay gastronômico com café especial e confeitaria na Pituba"
+        class="w-full h-full object-cover object-center scale-100"
+      />
+      <!-- Gradiente Cinematográfico Escuro para Legibilidade Perfeita -->
+      <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/55 to-black/65"></div>
+      <div class="absolute inset-0 bg-black/25"></div>
+    </div>
+
+    <!-- Conteúdo Central da Primeira Página -->
+    <div class="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-24 sm:py-32 text-center flex flex-col items-center justify-center">
+      
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-black/45 backdrop-blur-md border border-white/20 text-[11px] sm:text-xs font-semibold tracking-[0.2em] uppercase text-amber-200/90 mb-6 shadow-lg">
+        <i data-lucide="coffee" class="w-3.5 h-3.5 text-amber-300"></i>
+        <span>The American Coffee & Cake, Co. · Estd. 2013</span>
+      </div>
+
+      <span class="font-script text-3xl sm:text-5xl md:text-6xl text-[#F2E8DC] font-normal tracking-wide mb-3 drop-shadow-md">
+        Bem-vindo à Coffeetown Salvador
+      </span>
+
+      <h1 class="font-serif text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-white tracking-tight leading-[1.06] mb-6 drop-shadow-lg">
+        Bom Café,<br />Bons Momentos.
+      </h1>
+
+      <p class="text-sm sm:text-base md:text-lg lg:text-xl text-white/90 leading-relaxed max-w-2xl mx-auto mb-10 font-light drop-shadow">
+        Microlotes especiais da Chapada Diamantina com torrefação própria semanal, croissants folhados de manteiga e o autêntico Red Velvet nova-iorquino. O refúgio mais aconchegante da Rua Amazonas, na Pituba.
+      </p>
+
+      <!-- Botões de Ação -->
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto mb-10">
+        <button onclick="smoothScrollTo('cardapio')" class="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-full bg-[#C87D32] hover:bg-[#B36B25] text-white font-bold text-xs sm:text-sm tracking-wider uppercase transition-all shadow-xl shadow-black/40 hover:scale-105 active:scale-95 cursor-pointer">
+          <span>Explorar Nosso Cardápio</span>
+          <i data-lucide="arrow-down" class="w-4 h-4"></i>
+        </button>
+
+        <a href="https://wa.me/5571999914478?text=Ol%C3%A1%2C+Coffeetown+Salvador%21" target="_blank" class="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-7 py-4 rounded-full bg-white/15 hover:bg-white/25 backdrop-blur-md text-white border border-white/30 font-semibold text-xs sm:text-sm tracking-wider uppercase transition-all shadow-lg hover:scale-105 active:scale-95 cursor-pointer">
+          <i data-lucide="message-circle" class="w-4 h-4 text-emerald-400"></i>
+          <span>Fazer Pedido no WhatsApp</span>
+        </a>
+      </div>
+
+      <!-- Prova Social do Google Maps -->
+      <div class="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-black/50 backdrop-blur-md border border-white/15 text-xs text-white/90 shadow-md">
+        <span class="text-amber-400 font-bold">★★★★★</span>
+        <span class="font-bold text-white">4.9 / 5.0</span>
+        <span class="text-white/70">· Mais de 1.280 avaliações no Google Maps (Pituba)</span>
+      </div>
+
+    </div>
+
+    <!-- Indicador de Rolagem -->
+    <button onclick="smoothScrollTo('por-que-nos')" class="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-1 text-white/75 hover:text-white transition-colors cursor-pointer">
+      <span class="text-[10px] uppercase tracking-widest text-white/70">Rolar para Conhecer</span>
+      <i data-lucide="chevron-down" class="w-4 h-4 animate-bounce text-amber-300"></i>
+    </button>
+  </section>
+
+  <!-- ================= 3. POR QUE A COFFEETOWN? ================= -->
+  <section id="por-que-nos" class="py-16 md:py-24 bg-[#F7F2EB] border-b border-[#E8DFD5] scroll-mt-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-xl mx-auto mb-12 sm:mb-16">
+        <span class="text-[11px] font-bold text-[#5C3A21] uppercase tracking-[0.25em] block mb-2">
+          Tradição & Autenticidade · Desde 2013
+        </span>
+        <h2 class="font-serif text-3xl sm:text-4xl font-bold text-[#2C1E16] tracking-tight mb-2.5">
+          Por Que a Coffeetown?
+        </h2>
+        <p class="text-xs sm:text-sm text-[#7E6F65] leading-relaxed max-w-md mx-auto">
+          Somos apaixonados por café de verdade, confeitaria artesanal feita do zero e em criar momentos especiais para cada cliente em Salvador.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 items-stretch">
+        <!-- Card 1 -->
+        <div class="bg-[#FAF7F2] rounded-3xl border border-[#E8DFD5] p-5 sm:p-6 flex flex-col justify-between text-center h-full shadow-2xs hover:shadow-md transition-all">
+          <div>
+            <div class="w-full h-52 sm:h-56 rounded-2xl overflow-hidden mb-5 bg-[#EFE8DE]">
+              <img src="/src/assets/images/product_specialty_espresso_1790528618744.jpg" alt="Café de Alta Especialidade" class="w-full h-full object-cover" />
+            </div>
+            <span class="text-[11px] font-semibold text-[#5C3A21] uppercase tracking-wider block mb-1">Microlotes 85+ Pontos</span>
+            <h3 class="font-serif text-xl font-bold text-[#2C1E16] mb-2">Café de Alta Especialidade</h3>
+            <p class="text-xs text-[#6F6158] leading-relaxed mb-6">Grãos premiados da Chapada Diamantina com torrefação própria semanal na unidade Pituba.</p>
+          </div>
+          <button onclick="smoothScrollTo('cardapio')" class="inline-block px-6 py-2.5 rounded-full bg-[#5C3A21] hover:bg-[#452A18] text-white text-[11px] font-semibold tracking-wider uppercase transition-colors cursor-pointer">Ver Métodos</button>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="bg-[#FAF7F2] rounded-3xl border border-[#E8DFD5] p-5 sm:p-6 flex flex-col justify-between text-center h-full shadow-2xs hover:shadow-md transition-all">
+          <div>
+            <div class="w-full h-52 sm:h-56 rounded-2xl overflow-hidden mb-5 bg-[#EFE8DE]">
+              <img src="/src/assets/images/devils_food_cake_1790533697148.jpg" alt="Doces & Bolos Artesanais" class="w-full h-full object-cover" />
+            </div>
+            <span class="text-[11px] font-semibold text-[#5C3A21] uppercase tracking-wider block mb-1">Receitas Originais</span>
+            <h3 class="font-serif text-xl font-bold text-[#2C1E16] mb-2">Doces & Bolos Artesanais</h3>
+            <p class="text-xs text-[#6F6158] leading-relaxed mb-6">Autêntico Devil's Food com chocolate e café, Red Velvet novaiorquino e cheesecakes artesanais.</p>
+          </div>
+          <button onclick="smoothScrollTo('cardapio')" class="inline-block px-6 py-2.5 rounded-full bg-[#5C3A21] hover:bg-[#452A18] text-white text-[11px] font-semibold tracking-wider uppercase transition-colors cursor-pointer">Ver Bolos</button>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="bg-[#FAF7F2] rounded-3xl border border-[#E8DFD5] p-5 sm:p-6 flex flex-col justify-between text-center h-full shadow-2xs hover:shadow-md transition-all">
+          <div>
+            <div class="w-full h-52 sm:h-56 rounded-2xl overflow-hidden mb-5 bg-[#EFE8DE]">
+              <img src="/src/assets/images/villa_san_luigi_courtyard.jpg" alt="Villa San Luigi na Pituba" class="w-full h-full object-cover" />
+            </div>
+            <span class="text-[11px] font-semibold text-[#5C3A21] uppercase tracking-wider block mb-1">Villa San Luigi</span>
+            <h3 class="font-serif text-xl font-bold text-[#2C1E16] mb-2">Charme Toscano na Pituba</h3>
+            <p class="text-xs text-[#6F6158] leading-relaxed mb-6">Instalada no charmoso complexo Villa San Luigi na Rua Amazonas, combinando estilo italiano, clima agradável e conforto.</p>
+          </div>
+          <button onclick="smoothScrollTo('visite-nos')" class="inline-block px-6 py-2.5 rounded-full bg-[#5C3A21] hover:bg-[#452A18] text-white text-[11px] font-semibold tracking-wider uppercase transition-colors cursor-pointer">Como Chegar</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 4. DESTAQUES DO CARDÁPIO & COMANDA ================= -->
+  <section id="cardapio" class="py-16 md:py-24 bg-[#F7F2EB] border-b border-[#E8DFD5] scroll-mt-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-xl mx-auto mb-10 sm:mb-12">
+        <span class="text-[11px] font-bold text-[#5C3A21] uppercase tracking-[0.25em] block mb-2">
+          Cardápio & Pâtisserie Artesanal
+        </span>
+        <h2 class="font-serif text-3xl sm:text-4xl font-bold text-[#2C1E16] tracking-tight mb-2">
+          Destaques do Cardápio
+        </h2>
+        <p class="text-xs sm:text-sm text-[#7E6F65]">
+          Preparado artesanalmente todos os dias com carinho para você.
+        </p>
+      </div>
+
+      <!-- Fileira de 4 Destaques Principais -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6 mb-10">
+        
+        <!-- Item 1: Flat White -->
+        <div class="bg-[#FAF7F2] rounded-3xl border border-[#E8DFD5] p-4 flex flex-col justify-between text-center shadow-2xs hover:shadow-md transition-all">
+          <div>
+            <div class="w-full h-44 rounded-2xl overflow-hidden mb-3 bg-[#EFE8DE] relative">
+              <img src="/src/assets/images/barista_milk_pour_1790529660429.jpg" alt="Cappuccino & Flat White Especial" class="w-full h-full object-cover" />
+              <span class="absolute top-2.5 left-2.5 bg-[#FAF7F2]/90 text-[#5C3A21] text-[10px] font-bold px-2.5 py-0.5 rounded-full border border-[#E8DFD5]">Café Especial</span>
+            </div>
+            <h3 class="font-serif text-base font-bold text-[#2C1E16] mb-1">Cappuccino & Flat White</h3>
+            <span class="text-sm font-extrabold text-[#5C3A21] block mb-3">R$ 16,90</span>
+          </div>
+          <button onclick="addToCart('specialty-flat-white')" class="w-full py-2.5 rounded-full bg-[#5C3A21] hover:bg-[#452A18] text-white text-xs font-semibold tracking-wider uppercase transition-colors cursor-pointer">
+            + Adicionar ao Pedido
+          </button>
+        </div>
+
+        <!-- Item 2: Red Velvet -->
+        <div class="bg-[#FAF7F2] rounded-3xl border border-[#E8DFD5] p-4 flex flex-col justify-between text-center shadow-2xs hover:shadow-md transition-all">
+          <div>
+            <div class="w-full h-44 rounded-2xl overflow-hidden mb-3 bg-[#EFE8DE] relative">
+              <img src="/src/assets/images/product_red_velvet_cake_1790528609076.jpg" alt="Classic Red Velvet Cake" class="w-full h-full object-cover" />
+              <span class="absolute top-2.5 left-2.5 bg-[#FAF7F2]/90 text-[#5C3A21] text-[10px] font-bold px-2.5 py-0.5 rounded-full border border-[#E8DFD5]">American Cake</span>
+            </div>
+            <h3 class="font-serif text-base font-bold text-[#2C1E16] mb-1">Classic Red Velvet Cake</h3>
+            <span class="text-sm font-extrabold text-[#5C3A21] block mb-3">R$ 24,90</span>
+          </div>
+          <button onclick="addToCart('red-velvet')" class="w-full py-2.5 rounded-full bg-[#5C3A21] hover:bg-[#452A18] text-white text-xs font-semibold tracking-wider uppercase transition-colors cursor-pointer">
+            + Adicionar ao Pedido
+          </button>
+        </div>
+
+        <!-- Item 3: Avocado Toast -->
+        <div class="bg-[#FAF7F2] rounded-3xl border border-[#E8DFD5] p-4 flex flex-col justify-between text-center shadow-2xs hover:shadow-md transition-all">
+          <div>
+            <div class="w-full h-44 rounded-2xl overflow-hidden mb-3 bg-[#EFE8DE] relative">
+              <img src="/src/assets/images/product_brunch_avocado_toast_1790528628223.jpg" alt="Avocado Toast Sourdough" class="w-full h-full object-cover" />
+              <span class="absolute top-2.5 left-2.5 bg-[#FAF7F2]/90 text-[#5C3A21] text-[10px] font-bold px-2.5 py-0.5 rounded-full border border-[#E8DFD5]">Brunch</span>
+            </div>
+            <h3 class="font-serif text-base font-bold text-[#2C1E16] mb-1">Avocado Toast Sourdough</h3>
+            <span class="text-sm font-extrabold text-[#5C3A21] block mb-3">R$ 32,90</span>
+          </div>
+          <button onclick="addToCart('avocado-toast')" class="w-full py-2.5 rounded-full bg-[#5C3A21] hover:bg-[#452A18] text-white text-xs font-semibold tracking-wider uppercase transition-colors cursor-pointer">
+            + Adicionar ao Pedido
+          </button>
+        </div>
+
+        <!-- Item 4: Croissant Manteiga -->
+        <div class="bg-[#FAF7F2] rounded-3xl border border-[#E8DFD5] p-4 flex flex-col justify-between text-center shadow-2xs hover:shadow-md transition-all">
+          <div>
+            <div class="w-full h-44 rounded-2xl overflow-hidden mb-3 bg-[#EFE8DE] relative">
+              <img src="/src/assets/images/croissant_folhado_manteiga_1790533662196.jpg" alt="Croissant Francês de Manteiga" class="w-full h-full object-cover" />
+              <span class="absolute top-2.5 left-2.5 bg-[#FAF7F2]/90 text-[#5C3A21] text-[10px] font-bold px-2.5 py-0.5 rounded-full border border-[#E8DFD5]">Pâtisserie</span>
+            </div>
+            <h3 class="font-serif text-base font-bold text-[#2C1E16] mb-1">Croissant Francês</h3>
+            <span class="text-sm font-extrabold text-[#5C3A21] block mb-3">R$ 15,90</span>
+          </div>
+          <button onclick="addToCart('croissant-manteiga')" class="w-full py-2.5 rounded-full bg-[#5C3A21] hover:bg-[#452A18] text-white text-xs font-semibold tracking-wider uppercase transition-colors cursor-pointer">
+            + Adicionar ao Pedido
+          </button>
+        </div>
+
+      </div>
+
+      <!-- Botão Central de Ver Comanda -->
+      <div class="text-center">
+        <button onclick="toggleCartDrawer()" class="inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-[#EFE8DE] hover:bg-[#E3D7C9] text-[#5C3A21] border border-[#D9CEBF] text-xs sm:text-sm font-semibold tracking-wider uppercase transition-colors cursor-pointer">
+          <i data-lucide="shopping-bag" class="w-4 h-4"></i>
+          <span>Revisar Comanda de Pedido</span>
+        </button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= 5. VISITE A CAFETERIA NA PITUBA ================= -->
+  <section id="visite-nos" class="py-16 md:py-24 bg-[#F7F2EB] border-b border-[#E8DFD5] scroll-mt-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        
+        <!-- Informações e Ações Rápidas (PT-BR) -->
+        <div class="lg:col-span-6 space-y-6">
+          <div>
+            <span class="font-script text-2xl sm:text-3xl text-[#5C3A21] font-semibold block mb-1">Te esperamos na Pituba</span>
+            <h2 class="font-serif text-3xl sm:text-4xl font-bold text-[#2C1E16] tracking-tight">Visite a Coffeetown</h2>
+            <p class="text-xs sm:text-sm text-[#7E6F65] mt-2">Venha saborear o autêntico café e confeitaria artesanal em um ambiente único e acolhedor.</p>
+          </div>
+
+          <div class="bg-[#FAF7F2] p-6 rounded-3xl border border-[#E8DFD5] space-y-4 shadow-2xs">
+            <div class="flex items-start gap-3">
+              <i data-lucide="map-pin" class="w-5 h-5 text-[#5C3A21] shrink-0 mt-0.5"></i>
+              <div>
+                <span class="font-bold text-xs uppercase tracking-wider text-[#5C3A21] block">Endereço</span>
+                <p class="text-sm text-[#2C1E16] font-medium">Rua Amazonas, 1111 - Pituba, Salvador - BA</p>
+                <span class="text-xs text-[#7E6F65]">CEP 41830-380 · Próximo à Praça Ana Lúcia Magalhães</span>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-3 pt-3 border-t border-[#E8DFD5]">
+              <i data-lucide="clock" class="w-5 h-5 text-[#5C3A21] shrink-0 mt-0.5"></i>
+              <div>
+                <span class="font-bold text-xs uppercase tracking-wider text-[#5C3A21] block">Horário de Funcionamento</span>
+                <p class="text-sm text-[#2C1E16] font-medium">Segunda a Domingo: 08:30 às 21:00</p>
+                <span class="text-xs text-[#7E6F65]">Aberto em todos os feriados para café, almoço e chá da tarde</span>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-3 pt-3 border-t border-[#E8DFD5]">
+              <i data-lucide="phone" class="w-5 h-5 text-[#5C3A21] shrink-0 mt-0.5"></i>
+              <div>
+                <span class="font-bold text-xs uppercase tracking-wider text-[#5C3A21] block">WhatsApp e Reservas</span>
+                <p class="text-sm text-[#2C1E16] font-medium">(71) 99991-4478</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Botões de Ação Local -->
+          <div class="flex flex-wrap gap-3">
+            <a href="https://maps.google.com/?q=Coffeetown+Salvador+Rua+Amazonas+Pituba+Salvador+BA" target="_blank" class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#5C3A21] text-white text-xs font-semibold uppercase tracking-wider shadow-sm hover:bg-[#452A18] transition-colors">
+              <i data-lucide="navigation" class="w-4 h-4"></i>
+              <span>Como Chegar (Google Maps)</span>
+            </a>
+            <button onclick="navigator.clipboard.writeText('5571999914478'); alert('Chave Pix copiada com sucesso!');" class="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-white border border-[#D9CEBF] text-xs font-semibold text-[#5C3A21] cursor-pointer hover:bg-[#FAF7F2] transition-colors">
+              <i data-lucide="copy" class="w-4 h-4"></i>
+              <span>Copiar Chave Pix</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Colagem Fotográfica do Espaço -->
+        <div class="lg:col-span-6 grid grid-cols-2 gap-3.5">
+          <div class="rounded-2xl overflow-hidden border border-[#E8DFD5] h-60 bg-[#EFE8DE]">
+            <img src="/src/assets/images/cozy_interior_coffeetown_1790536113024.jpg" alt="Interior aconchegante da Coffeetown Pituba" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+          </div>
+          <div class="rounded-2xl overflow-hidden border border-[#E8DFD5] h-60 bg-[#EFE8DE]">
+            <img src="/src/assets/images/hero_coffeetown_artisan_1790528597712.jpg" alt="Balcão de doces e torrefação artesanal da Coffeetown Salvador" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+          </div>
+          <div class="col-span-2 rounded-2xl overflow-hidden border border-[#E8DFD5] h-48 bg-[#EFE8DE]">
+            <img src="/src/assets/images/villa_san_luigi_real_1790534526286.jpg" alt="Fachada e pórtico Villa San Luigi na Coffeetown Salvador na Pituba" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Link Direto para Álbum de Fotos Reais no Google Maps -->
+      <div class="mt-8 pt-6 border-t border-[#E8DFD5] flex flex-col sm:flex-row items-center justify-between gap-4 bg-[#FAF7F2] p-4 rounded-2xl border">
+        <div class="flex items-center gap-3">
+          <span class="text-xl">📍</span>
+          <div>
+            <span class="text-xs font-bold text-[#2C1E16] block">Galeria de Fotos do Google Maps</span>
+            <span class="text-[11px] text-[#7E6F65]">Explore mais de 1.280 fotos reais publicadas por frequentadores na unidade Pituba</span>
+          </div>
+        </div>
+        <a
+          href="https://maps.google.com/?q=Coffeetown+Salvador+Rua+Amazonas+Pituba+Salvador+BA"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white hover:bg-[#EFE8DE] text-[#5C3A21] border border-[#D9CEBF] text-xs font-semibold uppercase tracking-wider transition-colors shadow-2xs whitespace-nowrap"
+        >
+          <span>Ver Fotos no Google Maps</span>
+          <span class="text-amber-600">↗</span>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= 6. AVALIAÇÕES REAIS DO GOOGLE MAPS ================= -->
+  <section id="avaliacoes" class="py-16 md:py-24 bg-[#FAF7F2] border-b border-[#E8DFD5] scroll-mt-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+        <div>
+          <span class="text-xs font-semibold text-[#5C3A21] uppercase tracking-wider block mb-2">☕ Prova Social Verificada</span>
+          <h2 class="font-serif text-3xl sm:text-4xl font-bold text-[#2C1E16] tracking-tight">A Queridinha dos Clientes na Pituba</h2>
+          <p class="text-xs sm:text-sm text-[#7E6F65] mt-2 max-w-xl">Mais de uma década servindo com carinho clientes apaixonados por café especial e bolos novaiorquinos.</p>
+        </div>
+        <div class="flex items-center gap-3 p-3.5 rounded-2xl bg-white border border-[#E8DFD5] shadow-2xs">
+          <div class="text-amber-500 font-bold text-lg">★★★★★</div>
+          <div>
+            <span class="text-sm font-bold text-[#2C1E16] block">Nota 4.9 / 5.0</span>
+            <span class="text-[11px] text-[#7E6F65]">1.280+ avaliações no Google Maps</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="bg-[#F7F2EB] p-6 rounded-3xl border border-[#E8DFD5] flex flex-col justify-between shadow-2xs">
+          <p class="text-xs text-[#5A4B42] leading-relaxed mb-6 italic">"O melhor Red Velvet de Salvador sem sombra de dúvidas! O atendimento na unidade da Pituba é impecável e o café coado é extremamente saboroso."</p>
+          <div class="flex items-center gap-3 pt-4 border-t border-[#E8DFD5]">
+            <div class="w-8 h-8 rounded-full bg-[#5C3A21] text-white flex items-center justify-center font-bold text-xs">MS</div>
+            <div>
+              <span class="text-xs font-bold text-[#2C1E16] block">Mariana Sampaio</span>
+              <span class="text-[10px] text-[#7E6F65]">Local Guide · 45 avaliações</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-[#F7F2EB] p-6 rounded-3xl border border-[#E8DFD5] flex flex-col justify-between shadow-2xs">
+          <p class="text-xs text-[#5A4B42] leading-relaxed mb-6 italic">"Ambiente gostoso demais para trabalhar ou ter uma conversa boa. O cappuccino no ponto certo e o croissant com queijo é imperdível."</p>
+          <div class="flex items-center gap-3 pt-4 border-t border-[#E8DFD5]">
+            <div class="w-8 h-8 rounded-full bg-[#C87D32] text-white flex items-center justify-center font-bold text-xs">RO</div>
+            <div>
+              <span class="text-xs font-bold text-[#2C1E16] block">Rodrigo Oliveira</span>
+              <span class="text-[10px] text-[#7E6F65]">Cliente frequente na Pituba</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-[#F7F2EB] p-6 rounded-3xl border border-[#E8DFD5] flex flex-col justify-between shadow-2xs">
+          <p class="text-xs text-[#5A4B42] leading-relaxed mb-6 italic">"Cardápio com alma nova-iorquina em pleno coração da Pituba. O avocado toast é super generoso e os bolos são maravilhosos."</p>
+          <div class="flex items-center gap-3 pt-4 border-t border-[#E8DFD5]">
+            <div class="w-8 h-8 rounded-full bg-[#7E6F65] text-white flex items-center justify-center font-bold text-xs">CP</div>
+            <div>
+              <span class="text-xs font-bold text-[#2C1E16] block">Camila Prado</span>
+              <span class="text-[10px] text-[#7E6F65]">Salvador, BA</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= 7. RODAPÉ (PT-BR) ================= -->
+  <footer class="bg-[#FAF6F0] border-t border-[#E8DFD5] py-8 text-[#7E6F65] text-xs">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div>
+        <p class="font-medium text-[#2C1E16]">Coffeetown Salvador · The American Coffee & Cake, Co.</p>
+        <p class="text-[11px] text-[#A8988B] mt-0.5">Rua Amazonas, 1111 - Pituba, Salvador - BA · WhatsApp (71) 99991-4478</p>
+      </div>
+      <p class="text-[11px] text-[#A8988B]">© 2026 Coffeetown Salvador. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+
+  <!-- ================= DRAWER / MODAL DE COMANDA DE PEDIDO ================= -->
+  <div id="cartDrawer" class="hidden fixed inset-0 z-50 flex justify-end">
+    <div onclick="toggleCartDrawer()" class="fixed inset-0 bg-black/60 backdrop-blur-sm"></div>
+    <div class="relative w-full max-w-md bg-[#FAF7F2] h-full shadow-2xl flex flex-col z-10 border-l border-[#E8DFD5]">
+      
+      <!-- Topo da Comanda -->
+      <div class="p-5 border-b border-[#E8DFD5] flex items-center justify-between bg-[#F7F2EB]">
+        <div class="flex items-center gap-2">
+          <i data-lucide="shopping-bag" class="w-5 h-5 text-[#5C3A21]"></i>
+          <h3 class="font-serif font-bold text-lg text-[#2C1E16]">Comanda de Pedido</h3>
+        </div>
+        <button onclick="toggleCartDrawer()" class="p-2 text-[#7E6F65] hover:text-[#2C1E16] rounded-full">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+      <!-- Lista de Itens -->
+      <div id="cartItemsList" class="flex-1 overflow-y-auto p-5 space-y-3">
+        <p class="text-xs text-[#7E6F65] text-center py-10">Sua comanda está vazia no momento.</p>
+      </div>
+
+      <!-- Resumo e Envio para WhatsApp -->
+      <div class="p-5 border-t border-[#E8DFD5] bg-[#F7F2EB] space-y-4">
+        <div class="flex justify-between items-center text-sm font-bold text-[#2C1E16]">
+          <span>Subtotal Estimado:</span>
+          <span id="cartSubtotal" class="font-serif text-lg text-[#5C3A21]">R$ 0,00</span>
+        </div>
+        <button onclick="checkoutViaWhatsApp()" class="w-full py-3.5 rounded-full bg-[#5C3A21] hover:bg-[#452A18] text-white font-semibold text-xs uppercase tracking-wider transition-colors shadow-md flex items-center justify-center gap-2 cursor-pointer">
+          <i data-lucide="message-circle" class="w-4 h-4 fill-white"></i>
+          <span>Enviar Pedido pelo WhatsApp</span>
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- JAVASCRIPT VANILLA INTERATIVO -->
+  <script>
+    const ITEMS = {
+      'specialty-flat-white': { name: 'Cappuccino & Flat White Especial', price: 16.90 },
+      'red-velvet': { name: 'Classic Red Velvet Cake', price: 24.90 },
+      'avocado-toast': { name: 'Avocado Toast Sourdough', price: 32.90 },
+      'croissant-manteiga': { name: 'Croissant Francês', price: 15.90 }
+    };
+
+    let cart = {};
+
+    function smoothScrollTo(elementId) {
+      // Fecha o menu mobile se estiver aberto
+      const mobileMenu = document.getElementById('mobileMenuDropdown');
+      if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
+        mobileMenu.classList.add('hidden');
+      }
+
+      if (elementId === 'inicio') {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        return;
+      }
+
+      const el = document.getElementById(elementId);
+      if (el) {
+        const headerOffset = 80;
+        const elementPosition = el.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+        window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+      }
+    }
+
+    // Toggle Menu Mobile
+    document.getElementById('mobileMenuToggle')?.addEventListener('click', () => {
+      document.getElementById('mobileMenuDropdown')?.classList.toggle('hidden');
+    });
+
+    // Adaptação de cores do cabeçalho ao rolar a página
+    window.addEventListener('scroll', () => {
+      const scrollY = window.scrollY;
+      const isScrolled = scrollY > 60;
+      const header = document.getElementById('mainHeader');
+      const topBar = document.getElementById('topNotificationBar');
+      const brandTitle = document.getElementById('brandTitle');
+      const brandSubtitle = document.getElementById('brandSubtitle');
+      const navTabs = document.getElementById('topNavTabs');
+      const openCartBtn = document.getElementById('openCartBtn');
+
+      if (isScrolled) {
+        header.className = "fixed top-0 left-0 right-0 z-40 bg-[#FAF7F2]/95 backdrop-blur-md border-b border-[#E8DFD5] shadow-xs text-[#2C1E16] transition-all duration-300";
+        topBar.className = "w-full bg-[#EFE8DE] text-[#5C3A21] border-b border-[#E3D7C9] py-1.5 px-4 text-xs transition-colors";
+        brandTitle.className = "font-serif text-lg sm:text-xl font-bold tracking-tight text-[#2C1E16] block leading-none";
+        brandSubtitle.className = "text-[10px] text-[#7E6F65] font-medium tracking-[0.2em] uppercase";
+        navTabs.className = "hidden lg:flex items-center gap-1 p-1 bg-[#EFE8DE]/70 border border-[#D9CEBF] rounded-full";
+        openCartBtn.className = "flex items-center gap-2 px-3 sm:px-3.5 py-2 rounded-full bg-[#FAF7F2] hover:bg-[#EFE8DE] text-[#2C1E16] border border-[#D9CEBF] text-xs font-semibold cursor-pointer transition-all active:scale-95";
+      } else {
+        header.className = "fixed top-0 left-0 right-0 z-40 bg-black/40 backdrop-blur-md border-b border-white/10 text-white transition-all duration-300";
+        topBar.className = "w-full bg-black/50 text-white/80 border-b border-white/10 py-1.5 px-4 text-xs transition-colors";
+        brandTitle.className = "font-serif text-lg sm:text-xl font-bold tracking-tight text-white block leading-none";
+        brandSubtitle.className = "text-[10px] text-white/70 font-medium tracking-[0.2em] uppercase";
+        navTabs.className = "hidden lg:flex items-center gap-1 p-1 bg-white/10 border border-white/20 rounded-full backdrop-blur-md";
+        openCartBtn.className = "flex items-center gap-2 px-3 sm:px-3.5 py-2 rounded-full bg-white/15 hover:bg-white/25 text-white border border-white/25 text-xs font-semibold cursor-pointer transition-all active:scale-95";
+      }
+
+      // Sincroniza abas com scroll
+      const scrollPos = scrollY + 120;
+      const sections = ['inicio', 'por-que-nos', 'cardapio', 'visite-nos', 'avaliacoes'];
+      
+      for (let i = sections.length - 1; i >= 0; i--) {
+        const id = sections[i];
+        const el = document.getElementById(id);
+        if (el && scrollPos >= el.offsetTop) {
+          document.querySelectorAll('.nav-tab-btn').forEach(btn => {
+            const isActive = btn.dataset.tab === id;
+            if (isActive) {
+              btn.className = isScrolled
+                ? "nav-tab-btn px-3.5 py-1.5 rounded-full text-xs font-semibold tracking-wider transition-all bg-[#5C3A21] text-white shadow-xs font-bold cursor-pointer"
+                : "nav-tab-btn px-3.5 py-1.5 rounded-full text-xs font-semibold tracking-wider transition-all bg-[#C87D32] text-white shadow-md font-bold cursor-pointer";
+            } else {
+              btn.className = isScrolled
+                ? "nav-tab-btn px-3.5 py-1.5 rounded-full text-xs font-semibold tracking-wider transition-all text-[#5C3A21] hover:text-[#2C1E16] hover:bg-white/70 cursor-pointer"
+                : "nav-tab-btn px-3.5 py-1.5 rounded-full text-xs font-semibold tracking-wider transition-all text-white/80 hover:text-white hover:bg-white/15 cursor-pointer";
+            }
+          });
+          break;
+        }
+      }
+    }, { passive: true });
+
+    function addToCart(id) {
+      cart[id] = (cart[id] || 0) + 1;
+      updateCartUI();
+      toggleCartDrawer();
+    }
+
+    function removeFromCart(id) {
+      if (cart[id]) {
+        cart[id]--;
+        if (cart[id] <= 0) delete cart[id];
+      }
+      updateCartUI();
+    }
+
+    function updateCartUI() {
+      const count = Object.values(cart).reduce((a, b) => a + b, 0);
+      document.getElementById('cartCountBadge').textContent = count;
+      const list = document.getElementById('cartItemsList');
+      const subtotalEl = document.getElementById('cartSubtotal');
+      let subtotal = 0;
+
+      if (count === 0) {
+        list.innerHTML = '<p class="text-xs text-[#7E6F65] text-center py-10">Sua comanda está vazia no momento.</p>';
+      } else {
+        list.innerHTML = Object.entries(cart).map(([id, qty]) => {
+          const item = ITEMS[id];
+          if (!item) return '';
+          const total = item.price * qty;
+          subtotal += total;
+          return `
+            <div class="flex items-center justify-between p-3.5 rounded-2xl bg-white border border-[#E8DFD5] text-xs shadow-2xs">
+              <div>
+                <span class="font-bold text-[#2C1E16] block">${item.name}</span>
+                <span class="text-[#7E6F65]">R$ ${item.price.toFixed(2).replace('.', ',')} un</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <button onclick="removeFromCart('${id}')" class="w-6 h-6 rounded-full bg-[#EFE8DE] flex items-center justify-center font-bold text-xs cursor-pointer">-</button>
+                <span class="font-bold">${qty}</span>
+                <button onclick="addToCart('${id}')" class="w-6 h-6 rounded-full bg-[#5C3A21] text-white flex items-center justify-center font-bold text-xs cursor-pointer">+</button>
+                <span class="font-bold text-[#2C1E16] ml-2">R$ ${total.toFixed(2).replace('.', ',')}</span>
+              </div>
+            </div>
+          `;
+        }).join('');
+      }
+      subtotalEl.textContent = `R$ ${subtotal.toFixed(2).replace('.', ',')}`;
+    }
+
+    function toggleCartDrawer() {
+      document.getElementById('cartDrawer').classList.toggle('hidden');
+    }
+
+    document.getElementById('openCartBtn')?.addEventListener('click', toggleCartDrawer);
+
+    function checkoutViaWhatsApp() {
+      let text = `☕ *PEDIDO ONLINE - COFFEETOWN SALVADOR (PITUBA)*\n\n`;
+      let subtotal = 0;
+      Object.entries(cart).forEach(([id, qty]) => {
+        const item = ITEMS[id];
+        if (item) {
+          const total = item.price * qty;
+          subtotal += total;
+          text += `• ${qty}x ${item.name} — R$ ${total.toFixed(2).replace('.', ',')}\n`;
+        }
+      });
+      text += `\n*TOTAL:* R$ ${subtotal.toFixed(2).replace('.', ',')}\n`;
+      text += `_Pedido realizado via Landing Page Coffeetown Salvador_`;
+      window.open(`https://wa.me/5571999914478?text=${encodeURIComponent(text)}`, '_blank');
+    }
+
+    lucide.createIcons();
+  </script>
+</body>
+</html>

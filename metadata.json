@@ -1,0 +1,6 @@
+{
+  "name": "Coffeetown Salvador - American Coffee & Cake",
+  "description": "Landing Page de alta conversão para a Coffeetown Salvador na Pituba. Cardápio interativo, cafés especiais da torrefação própria, bolos americanos artesanais e pedidos rápidos via WhatsApp.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
