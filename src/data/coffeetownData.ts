@@ -39,6 +39,10 @@ export const STORE_INFO = {
   reviewsCount: '1.280+',
   pixKey: '5571999914478',
   pixBeneficiary: 'Coffeetown Salvador Cafeteria Ltda',
+  geo: {
+    lat: -13.0045325,
+    lng: -38.4602369,
+  },
   googleMapsUrl: 'https://maps.google.com/?q=Coffeetown+Salvador+Rua+Amazonas+Pituba+Salvador+BA',
   googleMapsPhotosUrl: 'https://maps.google.com/?q=Coffeetown+Salvador+Rua+Amazonas+Pituba+Salvador+BA',
   wazeUrl: 'https://waze.com/ul?q=Coffeetown+Salvador+Pituba',

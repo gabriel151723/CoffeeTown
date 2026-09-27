@@ -5,37 +5,99 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Coffeetown Salvador - American Coffee & Cake</title>
     <meta name="description" content="Landing Page de alta conversão para a Coffeetown Salvador na Pituba. Cardápio interativo, cafés especiais da torrefação própria, bolos americanos artesanais e pedidos rápidos via WhatsApp." />
+    <meta name="keywords" content="Coffeetown Salvador, cafeteria Pituba, café especial Salvador, American Coffee, Red Velvet Salvador, brunch Pituba, café Rua Amazonas, confeitaria artesanal Salvador, torrefação própria Bahia" />
+    
+    <!-- Meta tags de Geolocalização para SEO Local (Pituba, Salvador - BA) -->
+    <meta name="geo.region" content="BR-BA" />
+    <meta name="geo.placename" content="Pituba, Salvador, Bahia" />
+    <meta name="geo.position" content="-13.0045325;-38.4602369" />
+    <meta name="ICBM" content="-13.0045325, -38.4602369" />
+
+    <!-- OpenGraph & Twitter Cards -->
     <meta property="og:title" content="Coffeetown Salvador - American Coffee & Cake" />
     <meta property="og:description" content="Landing Page de alta conversão para a Coffeetown Salvador na Pituba. Cardápio interativo, cafés especiais da torrefação própria, bolos americanos artesanais e pedidos rápidos via WhatsApp." />
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content="restaurant.cafe" />
+    <meta property="og:site_name" content="Coffeetown Salvador" />
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Coffeetown Salvador - American Coffee & Cake" />
+    <meta name="twitter:description" content="Café especial com torrefação própria na Pituba, bolos americanos artesanais e ambiente acolhedor na Rua Amazonas, Salvador." />
+
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,400;1,600;1,700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Schema.org Structured Data (JSON-LD) para LocalBusiness / CafeOrCoffeeShop (Unidade Pituba) -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "CafeOrCoffeeShop",
-      "name": "Coffeetown Salvador",
-      "image": "/src/assets/images/hero_flatlay_coffee_1790529629197.jpg",
+      "@type": ["CafeOrCoffeeShop", "LocalBusiness", "Bakery"],
+      "@id": "https://maps.google.com/?q=Coffeetown+Salvador+Rua+Amazonas+Pituba+Salvador+BA#business",
+      "name": "Coffeetown Salvador - Pituba",
+      "alternateName": "Coffeetown The American Coffee & Cake, Co. - Unidade Pituba",
+      "description": "Cafeteria boutique e confeitaria artesanal americana na Pituba, Salvador. Microlotes de cafés especiais 85+ com torrefação própria semanal na unidade, o autêntico Red Velvet novaiorquino, brunch e pâtisserie.",
+      "image": [
+        "/src/assets/images/hero_flatlay_coffee_1790529629197.jpg",
+        "/src/assets/images/barista_milk_pour_1790529660429.jpg",
+        "/src/assets/images/product_red_velvet_cake_1790528609076.jpg"
+      ],
       "telephone": "+55-71-99991-4478",
+      "priceRange": "$$",
+      "currenciesAccepted": "BRL",
+      "paymentAccepted": "PIX, Cartão de Crédito, Cartão de Débito, Dinheiro",
+      "servesCuisine": [
+        "Café Especial",
+        "American Coffee",
+        "Confeitaria Americana",
+        "Brunch",
+        "Pâtisserie"
+      ],
       "address": {
         "@type": "PostalAddress",
-        "streetAddress": "Rua Amazonas, 1111",
+        "streetAddress": "Rua Amazonas, 1111 - Gourmet 01 - Villa San Luigi",
         "addressLocality": "Salvador",
         "addressRegion": "BA",
+        "postalCode": "41830-380",
         "addressCountry": "BR"
       },
-      "servesCuisine": ["American Coffee", "Artisan Bakery", "Brunch", "Specialty Coffee"],
-      "priceRange": "$$",
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": -13.0045325,
+        "longitude": -38.4602369
+      },
+      "hasMap": "https://maps.google.com/?q=Coffeetown+Salvador+Rua+Amazonas+Pituba+Salvador+BA",
+      "map": "https://maps.google.com/?q=Coffeetown+Salvador+Rua+Amazonas+Pituba+Salvador+BA",
       "openingHoursSpecification": [
         {
           "@type": "OpeningHoursSpecification",
-          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday",
+            "Sunday"
+          ],
           "opens": "08:30",
           "closes": "21:00"
         }
-      ]
+      ],
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "reviewCount": "1280",
+        "bestRating": "5",
+        "worstRating": "1"
+      },
+      "sameAs": [
+        "https://www.instagram.com/coffeetownsalvadorr",
+        "https://maps.google.com/?q=Coffeetown+Salvador+Rua+Amazonas+Pituba+Salvador+BA"
+      ],
+      "areaServed": {
+        "@type": "AdministrativeArea",
+        "name": "Pituba, Salvador, Bahia, Brasil"
+      }
     }
     </script>
   </head>
@@ -44,4 +106,3 @@
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
-

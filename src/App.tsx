@@ -15,6 +15,7 @@ import { Footer } from './components/Footer';
 import { OrderDrawer } from './components/OrderDrawer';
 import { MobileStickyCTA } from './components/MobileStickyCTA';
 import { ExportHtmlModal } from './components/ExportHtmlModal';
+import { CartToast } from './components/CartToast';
 import { MenuItem, STORE_INFO } from './data/coffeetownData';
 
 export default function App() {
@@ -29,6 +30,7 @@ export default function App() {
 
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [isExportOpen, setIsExportOpen] = useState(false);
+  const [lastAddedItem, setLastAddedItem] = useState<MenuItem | null>(null);
 
   useEffect(() => {
     try {
@@ -43,6 +45,7 @@ export default function App() {
       ...prev,
       [item.id]: (prev[item.id] || 0) + 1,
     }));
+    setLastAddedItem(item);
   };
 
   const handleRemoveFromCart = (itemId: string) => {
@@ -148,6 +151,14 @@ export default function App() {
       <ExportHtmlModal
         isOpen={isExportOpen}
         onClose={() => setIsExportOpen(false)}
+      />
+
+      {/* Notificação Flutuante Animada de Item Adicionado (Toast Premium) */}
+      <CartToast
+        lastAddedItem={lastAddedItem}
+        cartCount={totalCartCount}
+        onOpenCart={() => setIsCartOpen(true)}
+        onClose={() => setLastAddedItem(null)}
       />
     </div>
   );

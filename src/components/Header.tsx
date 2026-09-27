@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'motion/react';
 import { ShoppingBag, MessageCircle, Clock, Menu, X, Instagram, MapPin } from 'lucide-react';
 import { BrandSeal } from './BrandSeal';
 import { STORE_INFO } from '../data/coffeetownData';
@@ -212,24 +213,30 @@ export const Header: React.FC<HeaderProps> = ({ cartCount, onOpenCart }) => {
               <ShoppingBag className={`w-4 h-4 ${isScrolled ? 'text-[#5C3A21]' : 'text-amber-300'}`} />
               <span className="text-xs font-semibold hidden sm:inline">Comanda</span>
               {cartCount > 0 ? (
-                <span
+                <motion.span
+                  key={cartCount}
+                  initial={{ scale: 0.6 }}
+                  animate={{ scale: [1.25, 1] }}
+                  transition={{ duration: 0.25 }}
                   className={`inline-flex items-center justify-center text-[10px] font-bold rounded-full w-5 h-5 tabular-nums text-white ${
                     isScrolled ? 'bg-[#5C3A21]' : 'bg-[#C87D32]'
                   }`}
                 >
                   {cartCount}
-                </span>
+                </motion.span>
               ) : (
                 <span className={`text-xs hidden sm:inline ${isScrolled ? 'text-[#7E6F65]' : 'text-white/70'}`}>0</span>
               )}
             </button>
 
             {/* CTA Principal de Conversão WhatsApp */}
-            <a
+            <motion.a
+              whileHover={{ scale: 1.04 }}
+              whileTap={{ scale: 0.96 }}
               href={`${STORE_INFO.whatsappUrl}?text=${encodeURIComponent('Olá, Coffeetown Salvador! Gostaria de consultar o cardápio ou fazer um pedido.')}`}
               target="_blank"
               rel="noopener noreferrer"
-              className={`inline-flex items-center gap-1.5 sm:gap-2 px-4 sm:px-5 py-2 sm:py-2.5 rounded-full font-semibold text-xs sm:text-sm tracking-wide transition-all shadow-md whitespace-nowrap active:scale-95 cursor-pointer ${
+              className={`inline-flex items-center gap-1.5 sm:gap-2 px-4 sm:px-5 py-2 sm:py-2.5 rounded-full font-semibold text-xs sm:text-sm tracking-wide transition-all shadow-md whitespace-nowrap cursor-pointer shine-effect ${
                 isScrolled
                   ? 'bg-[#5C3A21] hover:bg-[#452A18] text-white shadow-[#5C3A21]/20'
                   : 'bg-[#C87D32] hover:bg-[#B36B25] text-white shadow-black/30'
@@ -237,7 +244,7 @@ export const Header: React.FC<HeaderProps> = ({ cartCount, onOpenCart }) => {
             >
               <MessageCircle className="w-4 h-4 fill-white" />
               <span>Fazer Pedido</span>
-            </a>
+            </motion.a>
 
             {/* Menu Hambúrguer Mobile */}
             <button
@@ -252,15 +259,20 @@ export const Header: React.FC<HeaderProps> = ({ cartCount, onOpenCart }) => {
           </div>
         </div>
 
-        {/* Dropdown Mobile com Abas Clicáveis e Scroll Suave */}
-        {mobileMenuOpen && (
-          <div
-            className={`lg:hidden mt-3 pt-3 border-t pb-2 space-y-1.5 animate-fadeIn rounded-2xl p-3 shadow-xl ${
-              isScrolled
-                ? 'bg-[#FAF7F2] border-[#E8DFD5]'
-                : 'bg-black/90 backdrop-blur-xl border-white/20'
-            }`}
-          >
+        {/* Dropdown Mobile com Abas Clicáveis e Scroll Suave com Animação */}
+        <AnimatePresence>
+          {mobileMenuOpen && (
+            <motion.div
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.2 }}
+              className={`lg:hidden mt-3 pt-3 border-t pb-2 space-y-1.5 rounded-2xl p-3 shadow-xl ${
+                isScrolled
+                  ? 'bg-[#FAF7F2] border-[#E8DFD5]'
+                  : 'bg-black/90 backdrop-blur-xl border-white/20'
+              }`}
+            >
             {NAV_TABS.map((tab) => {
               const isActive = activeTab === tab.id;
               return (
@@ -282,9 +294,10 @@ export const Header: React.FC<HeaderProps> = ({ cartCount, onOpenCart }) => {
                 </button>
               );
             })}
-          </div>
+          </motion.div>
         )}
-      </div>
-    </header>
-  );
+      </AnimatePresence>
+    </div>
+  </header>
+);
 };

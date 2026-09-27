@@ -1,14 +1,21 @@
 import React from 'react';
+import { motion } from 'motion/react';
 import { WHY_CHOOSE_US_ITEMS } from '../data/coffeetownData';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Sparkles } from 'lucide-react';
 
 export const WhyChooseUs: React.FC = () => {
   return (
     <section id="por-que-nos" className="py-16 md:py-24 bg-[#F7F2EB] border-b border-[#E8DFD5] scroll-mt-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Cabeçalho da Seção com Estética de Cafeteria Boutique */}
-        <div className="text-center max-w-xl mx-auto mb-12 sm:mb-16">
+        {/* Cabeçalho da Seção com Animação Editorial */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-50px' }}
+          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+          className="text-center max-w-xl mx-auto mb-12 sm:mb-16"
+        >
           <span className="text-[11px] font-bold text-[#5C3A21] uppercase tracking-[0.25em] block mb-2">
             Tradição & Autenticidade · Desde 2013
           </span>
@@ -20,25 +27,30 @@ export const WhyChooseUs: React.FC = () => {
           <p className="text-xs sm:text-sm text-[#7E6F65] leading-relaxed max-w-md mx-auto">
             Somos apaixonados por café de verdade, confeitaria artesanal feita do zero e em criar momentos especiais para cada cliente em Salvador.
           </p>
-        </div>
+        </motion.div>
 
-        {/* Grade de 3 Cards com Alturas Uniformes e Alinhamento Perfeito */}
+        {/* Grade de 3 Cards com Alturas Uniformes, Elevação Hover e Shimmer */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 items-stretch">
-          {WHY_CHOOSE_US_ITEMS.map((item) => (
-            <div
+          {WHY_CHOOSE_US_ITEMS.map((item, index) => (
+            <motion.div
               key={item.id}
-              className="bg-[#FAF7F2] rounded-3xl border border-[#E8DFD5] p-5 sm:p-6 flex flex-col justify-between shadow-2xs hover:shadow-md transition-all duration-300 group h-full"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-50px' }}
+              transition={{ duration: 0.6, delay: index * 0.15, ease: [0.22, 1, 0.36, 1] }}
+              whileHover={{ y: -8, transition: { duration: 0.25 } }}
+              className="bg-[#FAF7F2] rounded-3xl border border-[#E8DFD5] p-5 sm:p-6 flex flex-col justify-between shadow-2xs hover:shadow-xl hover:border-amber-600/30 transition-all duration-300 group h-full relative"
             >
               {/* Moldura da Imagem */}
               <div>
-                <div className="w-full h-52 sm:h-56 rounded-2xl overflow-hidden mb-5 bg-[#EFE8DE] relative">
+                <div className="w-full h-52 sm:h-56 rounded-2xl overflow-hidden mb-5 bg-[#EFE8DE] relative shine-effect">
                   <img
                     src={item.image}
                     alt={item.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    className="w-full h-full object-cover group-hover:scale-108 transition-transform duration-700 ease-out"
                     loading="lazy"
                   />
-                  <span className="absolute top-3 left-3 bg-[#FAF7F2]/90 backdrop-blur-sm text-[#5C3A21] text-[10px] font-bold px-3 py-1 rounded-full border border-[#E8DFD5] uppercase tracking-wider">
+                  <span className="absolute top-3 left-3 bg-[#FAF7F2]/95 backdrop-blur-sm text-[#5C3A21] text-[10px] font-bold px-3 py-1 rounded-full border border-[#E8DFD5] uppercase tracking-wider shadow-xs">
                     {item.tag}
                   </span>
                 </div>
@@ -59,17 +71,19 @@ export const WhyChooseUs: React.FC = () => {
                 </div>
               </div>
 
-              {/* Botão Inferior Uniformizado */}
+              {/* Botão Inferior Uniformizado com Micro-Interação */}
               <div className="text-center pt-2">
-                <a
+                <motion.a
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
                   href="#cardapio"
-                  className="inline-flex items-center gap-1.5 px-6 py-2.5 rounded-full bg-[#5C3A21] hover:bg-[#452A18] text-white text-[11px] font-semibold tracking-wider uppercase transition-colors shadow-2xs"
+                  className="inline-flex items-center gap-1.5 px-6 py-2.5 rounded-full bg-[#5C3A21] hover:bg-[#452A18] text-white text-[11px] font-semibold tracking-wider uppercase transition-colors shadow-2xs cursor-pointer shine-effect"
                 >
                   <span>{item.cta}</span>
-                  <ArrowRight className="w-3 h-3" />
-                </a>
+                  <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
+                </motion.a>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
 
